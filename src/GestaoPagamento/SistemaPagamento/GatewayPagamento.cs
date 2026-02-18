@@ -3,11 +3,11 @@ using GestaoPagamento.SistemaPagamento.MetodosPagamento;
 
 namespace GestaoPagamento.SistemaPagamento;
 
-public class GatewayPagamento()
+public class GatewayPagamento(EMeioPagamento gatewayPagamento)
 {
     private IGatewayPagamento? Gateway;
 
-    public void ExecutarPagamento(EMeioPagamento gatewayPagamento, decimal total, string cartaoCredito)
+    public void ExecutarPagamento(decimal total, string cartaoCredito)
     {
         switch (gatewayPagamento)
         {
@@ -22,12 +22,7 @@ public class GatewayPagamento()
                 break;
             default:
                 Console.WriteLine("Meio de pagamento incorreto.");
-                break;
-        }
-
-        if (Gateway is null)
-        {
-            Console.WriteLine("Meio de pagamento incorreto.");
+                return;
         }
 
         var validar = Gateway!.Validar();
