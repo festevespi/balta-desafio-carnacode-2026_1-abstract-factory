@@ -33,7 +33,7 @@ public class StripeGateway() : IGatewayPagamento
 
     private class StripeLogger : BaseLogger
     {
-        public StripeLogger(string mensagem) : base("Stripe")
+        public StripeLogger(string? mensagem) : base("Stripe")
         {
             Log(mensagem);
         }

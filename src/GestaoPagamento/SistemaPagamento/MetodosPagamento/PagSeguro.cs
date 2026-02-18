@@ -9,7 +9,7 @@ public class PagSeguroGateway() : IGatewayPagamento
 
     public IProcessarPagamento ProcessarPagamento() => new PagSeguroProcessarPagamento();
 
-    public ILogger GerarLog() => new PagSeguroLogger("mensagem em branco");
+    public ILogger GerarLog() => new PagSeguroLogger();
 
 
 
@@ -34,7 +34,7 @@ public class PagSeguroGateway() : IGatewayPagamento
 
     private class PagSeguroLogger : BaseLogger
     {
-        public PagSeguroLogger(string mensagem) : base("PagSeguro")
+        public PagSeguroLogger(string? mensagem = null) : base("PagSeguro")
         {
             Log(mensagem);
         }

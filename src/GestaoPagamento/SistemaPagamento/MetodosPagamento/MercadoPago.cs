@@ -8,7 +8,7 @@ public class MercadoPagoGateway() : IGatewayPagamento
 
     public IProcessarPagamento ProcessarPagamento() => new MercadoPagoProcessarPagamento();
 
-    public ILogger GerarLog() => new MercadoPagoLogger("mensagem em branco");
+    public ILogger GerarLog() => new MercadoPagoLogger();
 
     // Componentes do MercadoPago
     private class MercadoPagoValidator : IValidarPagamento
@@ -31,7 +31,7 @@ public class MercadoPagoGateway() : IGatewayPagamento
 
     private class MercadoPagoLogger : BaseLogger
     {
-        public MercadoPagoLogger(string mensagem) : base("MercadoPago")
+        public MercadoPagoLogger(string? mensagem = null) : base("MercadoPago")
         {
             Log(mensagem);
         }
